@@ -5,21 +5,22 @@ let clickUpgrades = [
         name: 'One Portal',
         price: 10,
         quantity: 0,
+        multiplier: 1
 
     },
     {
         name: 'Ten Portal',
         price: 25,
         quantity: 0,
-
+        multiplier: 1
     }
 ]
 
 
 let automaticUpgrades =
 {
-    name: 'rover',
-    price: 600,
+    name: 'Auto',
+    price: 1,
     quantity: 0,
     multiplier: 20
 
@@ -33,28 +34,138 @@ let automaticUpgrades =
 //     ClickPowerTen: 0,
 //     ClickPowerTen1: 0
 // }
-
-
 // //  BothClickPower = TotalVsPower.ClickPowerOne + TotalVsPower.ClickPowerTen
+
+
+
+
+
 function clickBlackHole() {
     Total++
     console.log(Total)
     DrawBlackHole()
+
 }
+
+function AddBonuses() {
+    const buyOne = clickUpgrades.find((upgrade) => upgrade.name == "One Portal")
+    Total += (1 + (buyOne.multiplier * buyOne.quantity))
+}
+
+
+
 
 function DrawBlackHole() {
     const TotalItems = document.getElementById('TotalItems')
     console.log('clicked', Total)
 
     TotalItems.innerText = Total
-    // TotalItems.innerText = TotalVsPower.Total += TotalVsPower.ClickPowerTen
 }
 
 function BuyOnePortal() {
     const BuyOne = clickUpgrades.find((upgrade) => upgrade.name == "One Portal")
-    console.log(BuyOne)
-    Total -= BuyOne.price
+
+    if (Total > BuyOne.price) {
+        BuyOne.quantity++
+        Total -= BuyOne.price
+        BuyOne.price += 5
+        BuyOne.multiplier++
+        console.log("purchased", BuyOne);
+    }
+    else {
+        console.log("Not enough money");
+    }
+    DrawBlackHole()
+    DrawPortalOneStats()
 }
+
+
+function DrawPortalOneStats() {
+    const BuyOne = clickUpgrades.find((upgrade) => upgrade.name == "One Portal")
+    const BuyOneElement = document.getElementById('OneTeleportx')
+    BuyOneElement.innerText = BuyOne.quantity
+}
+
+
+
+
+function BuyTenPortal() {
+    const BuyTen = clickUpgrades.find((upgrade) => upgrade.name == "Ten Portal")
+
+    if (Total > BuyTen.price) {
+        BuyTen.quantity += 10
+        Total -= BuyTen.price
+        BuyTen.price += 50
+        BuyTen.multiplier++
+        console.log("purchased", BuyTen);
+    }
+    else {
+        console.log("Not enough money");
+    }
+    DrawBlackHole()
+    DrawPortalTenStats()
+}
+
+
+function DrawPortalTenStats() {
+    const BuyTen = clickUpgrades.find((upgrade) => upgrade.name == "Ten Portal")
+    const BuyTenElement = document.getElementById('TenTeleportx')
+    BuyTenElement.innerText = BuyTen.quantity
+}
+
+
+// function AutoAddOne() {
+//     if (Total > automaticUpgrades.price) {
+//         automaticUpgrades.quantity++
+//         Total -= automaticUpgrades.price
+//         automaticUpgrades.price += 1
+//         automaticUpgrades.multiplier++
+//         console.log("purchased", automaticUpgrades);
+//     }
+//     else {
+//         console.log("Not enough money");
+//     }
+// }
+
+
+function AutoAddOne() {
+    let AutoTotal = 0
+    for (let key in automaticUpgrades) {
+        AutoTotal += automaticUpgrades[key].multiplier * automaticUpgrades[key].quantity
+    }
+}
+
+
+
+
+setInterval(AutoAddOne, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function OneTeleport() {
