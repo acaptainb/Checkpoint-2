@@ -25,7 +25,7 @@
 
     <main class="container">
         <div class="row">
-            <div class="col-12  text-center">
+            <div class="col-12 img-flui text-center">
                 <img onclick="clickBlackHole()"
                     src="https://hips.hearstapps.com/hmg-prod/images/abstract-art-black-spot-on-white-background-royalty-free-image-1601296944.jpg?crop=0.66667xw:1xh;center,top&resize=640:*"
                     alt="">
@@ -35,17 +35,26 @@
 
     <footer class="container">
         <div class="row justify-content-center ">
-            <div class="col-1 border bg-light">+ <span id="BothClickPower"></span></div>
+            <!-- TODO display click power here -->
+            <div id="clickpower" class="col-1 border bg-light">
+                +<span id="BothClickPower"></span>
+            </div>
             <div class="col-3 border bg-light">Total:<span id="TotalItems"></span></div>
-            <div class="col-1 border bg-light">jsbsriubius</div>
+            <!-- TODO display auto power here -->
+            <div id=autopower class="col-1 border bg-light"></div>
         </div>
         <div class="row">
             <div class="col-6">
                 <div class="row">
                     <div class="col-6 border bg-body-tertiary"><button onclick="BuyOnePortal()"
-                            class="btn btn-outline-success">Upgrade +1</button> <span id="OneTeleport">0</span></div>
-                    <div class="col-6 border bg-body-tertiary"><button onclick="AutomationOne()"
-                            class="btn btn-outline-success"> <span id="AutomationOne"></span></button></div>
+                            class="btn btn-outline-success">Upgrade +1</button>
+                        <!-- TODO display current price of onePortal here -->
+                        Price:<span id="OneTeleportPrice"></span>
+                    </div>
+                    <div class="col-6 border bg-body-tertiary"><button onclick="BuyAuto1()"
+                            class="btn btn-outline-success"> <span id="AutomationOne"></span> Auto +10</button>
+                        Price:<span id="Auto1Price"></span>
+                    </div>
                 </div>
             </div>
             <div class="col-6">
@@ -53,10 +62,11 @@
 
                     <div class="col-6 border bg-body-tertiary d-flex justify-content-between">
                         <button class="btn btn-outline-success rounded"><span id="OneTeleportx"> </span></button>
-                        - - - - - - - - - - - - - - - - - - - - - - >
+                        - - - - - - - - - - - - - - - - - >
                         <button class="btn btn-outline-success rounded"><span id="OneTeleportx2"> </span></button>
                     </div>
-                    <div class="col-6 border bg-body-tertiary"><button class="btn btn-outline-success"></button>
+                    <div class="col-6 border bg-body-tertiary"><button class="btn btn-outline-success"> <span
+                                id="OneTeleportQuantity"></span></button>
                     </div>
 
                 </div>
@@ -66,18 +76,26 @@
             <div class="col-6">
                 <div class="row">
                     <div class="col-6 border bg-body-tertiary"><button onclick="BuyTenPortal()"
-                            class="btn btn-outline-success">Upgrade +10</button> <span id="TenTeleport">0</span></div>
-                    <div class="col-6 border bg-body-tertiary"><button class="btn btn-outline-success"></button></div>
+                            class="btn btn-outline-success">Upgrade +10</button>
+                        <!-- TODO display price of tenPortal here -->
+                        Price:<span id="TenTeleportPrice">100</span>
+                    </div>
+                    <div class="col-6 border bg-body-tertiary"><button onclick="BuyAuto2()"
+                            class="btn btn-outline-success">Auto +100</button>
+                        Price:<span id="Auto2Price">1000</span>
+                    </div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="row">
                     <div class="col-6 border bg-body-tertiary d-flex justify-content-between">
-                        <button class="btn btn-outline-success rounded"><span id="TenTeleporty"> 0</span></button>
-                        - - - - - - - - - - - - - - - - - - - - - - >
-                        <button class="btn btn-outline-success rounded"><span id="TenTeleportx">0</span></button>
+                        <button class="btn btn-outline-success rounded">
+                            <span id="TenTeleportx"> 0</span></button>
+                        - - - - - - - - - - - - - - - - - >
+                        <button class="btn btn-outline-success rounded"><span id="TenTeleporty">0</span></button>
                     </div>
-                    <div class="col-6 border bg-body-tertiary"><button class="btn btn-outline-success"></button></div>
+                    <div class="col-6 border bg-body-tertiary"><button class="btn btn-outline-success"><span
+                                id="TenTeleportQuantity"></span></button> </div>
                 </div>
             </div>
         </div>
